@@ -4,27 +4,27 @@ import React from "react";
 const dummyData = [
   {
     name: "fruits",
-    src: "/images/fruits_00.png",
+    src: "/images/carousel/fruits_00.png",
     alt: "fruits_00",
   },
   {
     name: "fruits",
-    src: "/images/fruits_01.jpg",
+    src: "/images/carousel/fruits_01.jpg",
     alt: "fruits_01",
   },
   {
     name: "fruits",
-    src: "/images/fruits_02.jpg",
+    src: "/images/carousel/fruits_02.jpg",
     alt: "fruits_02",
   },
   {
     name: "fruits",
-    src: "/images/fruits_03.jpg",
+    src: "/images/carousel/fruits_03.jpg",
     alt: "fruits_03",
   },
   {
     name: "fruits",
-    src: "/images/fruits_04.png",
+    src: "/images/carousel/fruits_04.png",
     alt: "fruits_04",
   },
 ];
