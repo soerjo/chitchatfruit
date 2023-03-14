@@ -16,6 +16,8 @@ module.exports = {
       putih: "#FFFFFF",
       abu: "#4F4F4F",
       "hijau-army": "#05505C",
+      neutral: "#EBF0F4",
+      kuning: "#F2C94C",
     },
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],

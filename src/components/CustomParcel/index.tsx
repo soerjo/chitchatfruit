@@ -9,7 +9,7 @@ const CustomParcelComp = () => {
         <img
           src="/images/background/bg_01.jpg"
           alt="bg_01"
-          className="object-cover"
+          className="object-cover h-[418px] w-full"
         />
         <div className="absolute top-0 bottom-0 right-0 left-0 flex justify-end items-center px-[24px]">
           <div className="bg-white w-[272px] p-[24px] flex flex-col gap-4">
