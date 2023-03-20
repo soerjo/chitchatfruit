@@ -1,5 +1,6 @@
 import React from "react";
-const phone_number = "087808295838";
+
+const phone_number = "6287841598516";
 
 const FloatingWhatsapp = () => {
   return (

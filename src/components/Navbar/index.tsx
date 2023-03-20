@@ -1,6 +1,8 @@
 import React from "react";
-import { Navbar } from "flowbite-react";
 import Button from "../common/Button";
+import Link from "next/link";
+
+const phone_number = "6287841598516";
 
 const NavbarComp = () => {
   return (
@@ -9,7 +11,9 @@ const NavbarComp = () => {
         <span className="self-center whitespace-nowrap text-xl font-normal dark:text-white text-[24px] font-candal">
           <img src="/logos/main_logo.svg" />
         </span>
-        <Button>Contact Us</Button>
+        <Link href={`https://api.whatsapp.com/send?phone=${phone_number}`}>
+          <Button>Contact Us</Button>
+        </Link>
       </div>
       <div className="w-full h-[85px] bg-red-300" />
     </>
