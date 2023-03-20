@@ -6,7 +6,7 @@ const constantDir = path.join(process.cwd());
 export const readFile = async <T>(filename: string): Promise<T> => {
   try {
     const CONSTANT = readFileSync(
-      constantDir + "/src/temp/" + filename,
+      constantDir + "/src/tmp/" + filename,
       "utf-8"
     );
     return JSON.parse(CONSTANT);
@@ -18,7 +18,7 @@ export const readFile = async <T>(filename: string): Promise<T> => {
 
 export const writeFile = async (filename: string, data: any) => {
   try {
-    writeFileSync(constantDir + "/src/temp/" + filename, JSON.stringify(data));
+    writeFileSync(constantDir + "/src/tmp/" + filename, JSON.stringify(data));
   } catch (error) {
     console.error(error);
   }
