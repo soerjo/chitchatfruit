@@ -1,41 +1,29 @@
+import axios from "axios";
 import React from "react";
 import CardComp, { CardCompProps } from "../common/Card";
 import Container from "../common/Container";
 
-const dummyProductData: CardCompProps[] = [
-  {
-    title: "Hampers Lebaran",
-    description: "Rayakan Lebaran mu dengan hampers spesial dari kami",
-    price: 70000,
-    img: "/images/product/product_01.png",
-  },
-  {
-    title: "Hampers Lebaran",
-    description: "Rayakan Lebaran mu dengan hampers spesial dari kami",
-    price: 70000,
-    img: "/images/product/product_01.png",
-  },
-  {
-    title: "Hampers Lebaran",
-    description: "Rayakan Lebaran mu dengan hampers spesial dari kami",
-    price: 70000,
-    img: "/images/product/product_01.png",
-  },
-  {
-    title: "Hampers Lebaran",
-    description: "Rayakan Lebaran mu dengan hampers spesial dari kami",
-    price: 70000,
-    img: "/images/product/product_01.png",
-  },
-  {
-    title: "Hampers Lebaran",
-    description: "Rayakan Lebaran mu dengan hampers spesial dari kami",
-    price: 70000,
-    img: "/images/product/product_01.png",
-  },
-];
-
 const ParcelSpecialComp = () => {
+  const [dummyProductData, setdummyProductData] = React.useState<Array<any>>(
+    []
+  );
+
+  const fetchProduct = async () => {
+    try {
+      const res = await axios.get("/api/product");
+      setdummyProductData(res.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  React.useEffect(() => {
+    const controller = new AbortController();
+    fetchProduct();
+
+    return () => controller.abort();
+  }, []);
+
   return (
     <Container>
       <div className="w-full flex flex-col justify-center items-center">
@@ -49,13 +37,13 @@ const ParcelSpecialComp = () => {
                 title={data.title}
                 description={data.description}
                 price={data.price}
-                img={data.img}
+                img={data.src}
               />
             ))}
           </div>
           <img src="/logos/right_button.svg" />
         </div>
-        <div className="w-full flex gap-4">
+        {/* <div className="w-full flex gap-4">
           <img src="/logos/left_button.svg" />
           <div className="flex flex-row gap-4 w-full py-4 overflow-hidden">
             {dummyProductData.map((data, index) => (
@@ -69,7 +57,7 @@ const ParcelSpecialComp = () => {
             ))}
           </div>
           <img src="/logos/right_button.svg" />
-        </div>
+        </div> */}
       </div>
     </Container>
   );

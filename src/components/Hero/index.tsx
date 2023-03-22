@@ -1,35 +1,26 @@
-import { Carousel } from "flowbite-react";
+import axios from "axios";
 import React from "react";
-
-const dummyData = [
-  {
-    name: "fruits",
-    src: "/images/carousel/fruits_00.png",
-    alt: "fruits_00",
-  },
-  {
-    name: "fruits",
-    src: "/images/carousel/fruits_01.jpg",
-    alt: "fruits_01",
-  },
-  {
-    name: "fruits",
-    src: "/images/carousel/fruits_02.jpg",
-    alt: "fruits_02",
-  },
-  {
-    name: "fruits",
-    src: "/images/carousel/fruits_03.jpg",
-    alt: "fruits_03",
-  },
-  {
-    name: "fruits",
-    src: "/images/carousel/fruits_04.png",
-    alt: "fruits_04",
-  },
-];
+import { Carousel } from "flowbite-react";
 
 const Hero = () => {
+  const [dummyData, setdummyData] = React.useState<Array<any>>([]);
+
+  const fetchHero = async () => {
+    try {
+      const res = await axios.get("/api/hero");
+      setdummyData(res.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  React.useEffect(() => {
+    const controller = new AbortController();
+    fetchHero();
+
+    return () => controller.abort();
+  }, []);
+
   return (
     <div className="h-[640px] sm:h-[640px] xl:h-[640px] 2xl:h-[640px]">
       <Carousel slideInterval={5000}>

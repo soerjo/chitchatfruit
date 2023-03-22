@@ -1,0 +1,42 @@
+[
+  {
+    "index": "123",
+    "title": "fruits",
+    "src": "/images/product/fruits_02.jpg",
+    "type": "keramik",
+    "description": "rayakan sebuah description yang sangat panjang mungkin yang sangat panjang mungkinyang sangat panjang mungkin",
+    "price": 45000,
+    "updated_at": "2023-03-22T14:37:39.727Z",
+    "created_at": "2023-03-22T14:30:39.727Z"
+  },
+  {
+    "index": "124",
+    "title": "fruits",
+    "src": "/images/product/fruits_01.jpg",
+    "type": "buah",
+    "description": "rayakan sebuah description yang sangat panjang mungkin yang sangat panjang mungkinyang sangat panjang mungkin",
+    "price": 45000,
+    "updated_at": "2023-03-22T14:37:39.727Z",
+    "created_at": "2023-03-22T14:30:39.727Z"
+  },
+  {
+    "index": "125",
+    "title": "fruits",
+    "src": "/images/product/fruits_03.jpg",
+    "type": "buah",
+    "description": "rayakan sebuah description yang sangat panjang mungkin yang sangat panjang mungkinyang sangat panjang mungkin",
+    "price": 45000,
+    "updated_at": "2023-03-22T14:37:39.727Z",
+    "created_at": "2023-03-22T14:30:39.727Z"
+  },
+  {
+    "index": "126",
+    "title": "fruits",
+    "src": "/images/product/fruits_00.png",
+    "type": "snack",
+    "description": "rayakan sebuah description yang sangat panjang mungkin yang sangat panjang mungkinyang sangat panjang mungkin",
+    "price": 4500,
+    "updated_at": "2023-03-22T14:37:39.727Z",
+    "created_at": "2023-03-22T14:30:39.727Z"
+  }
+]

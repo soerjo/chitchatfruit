@@ -1,3 +1,4 @@
+import ModalComp from "@/components/common/Modal";
 import axios, { AxiosError } from "axios";
 import Head from "next/head";
 import { useRouter } from "next/navigation";

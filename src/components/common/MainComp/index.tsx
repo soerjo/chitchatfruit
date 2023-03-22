@@ -1,9 +1,9 @@
 import React from "react";
 
 interface MainCompInterface {
-  title: String;
-  description: String;
-  children: React.ReactNode;
+  title?: String;
+  description?: String;
+  children?: React.ReactNode;
 }
 
 const MainComp: React.FC<MainCompInterface> = ({
@@ -14,8 +14,10 @@ const MainComp: React.FC<MainCompInterface> = ({
   return (
     <div className="w-full p-[24px]">
       <div className="w-full mb-8">
-        <h1 className="font-poppins text-[20px] font-semibold ">{title}</h1>
-        <p>{description}</p>
+        {title && (
+          <h1 className="font-poppins text-[20px] font-semibold ">{title}</h1>
+        )}
+        {description && <p>{description}</p>}
       </div>
       {children}
     </div>
