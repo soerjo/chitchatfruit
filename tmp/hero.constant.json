@@ -1,1 +1,38 @@
-[{"position":1,"alt":"IMG_6954","name":"IMG_6954","src":"/images/carousel/1679579458134.JPG","is_active":true,"created_at":"1970-01-01T00:00:00.000Z","updated_at":"2023-03-23T15:10:47.331Z"},{"position":2,"alt":"IMG_6688","name":"IMG_6688","src":"/images/carousel/1679584282479.JPG","is_active":true,"created_at":"1970-01-01T00:00:00.000Z","updated_at":"2023-03-23T15:11:26.250Z"},{"position":3,"alt":"NPWP Randy Andy","name":"NPWP Randy Andy","src":"/images/carousel/1679584357184.png","is_active":true,"created_at":"1970-01-01T00:00:00.000Z","updated_at":"2023-03-23T15:12:37.197Z"},{"position":4,"alt":"IMG_6910","name":"IMG_6910","src":"/images/carousel/1679584324511.JPG","is_active":true,"created_at":"1970-01-01T00:00:00.000Z","updated_at":"2023-03-23T15:12:06.317Z"}]
+[
+  {
+    "position": 1,
+    "alt": "IMG_6954",
+    "name": "IMG_6954",
+    "src": "/images/carousel/pexels-asad-nazir-1987049.jpg",
+    "is_active": true,
+    "created_at": "1970-01-01T00:00:00.000Z",
+    "updated_at": "2023-03-23T15:10:47.331Z"
+  },
+  {
+    "position": 2,
+    "alt": "IMG_6688",
+    "name": "IMG_6688",
+    "src": "/images/carousel/pexels-ella-olsson-1334131.jpg",
+    "is_active": true,
+    "created_at": "1970-01-01T00:00:00.000Z",
+    "updated_at": "2023-03-23T15:11:26.250Z"
+  },
+  {
+    "position": 3,
+    "alt": "NPWP Randy Andy",
+    "name": "NPWP Randy Andy",
+    "src": "/images/carousel/pexels-engin-akyurt-2736370.jpg",
+    "is_active": true,
+    "created_at": "1970-01-01T00:00:00.000Z",
+    "updated_at": "2023-03-23T15:12:37.197Z"
+  },
+  {
+    "position": 4,
+    "alt": "IMG_6910",
+    "name": "IMG_6910",
+    "src": "/images/carousel/Rectangle 1.png",
+    "is_active": true,
+    "created_at": "1970-01-01T00:00:00.000Z",
+    "updated_at": "2023-03-23T15:12:06.317Z"
+  }
+]
