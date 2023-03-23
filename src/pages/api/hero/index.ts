@@ -27,21 +27,6 @@ export default async function handler(
         .json({ status: 200, message: "success", data: data });
     }
 
-    case "POST": {
-      try {
-        const data = await readFile<Array<dataHeroInterface>>(
-          "hero.constant.json"
-        );
-
-        writeFile("user.constant.json", data);
-
-        return res.status(201).json({ status: 201, message: "success" });
-      } catch (error) {
-        console.error(error);
-        return res.status(500).json({ status: 500, message: "server error!" });
-      }
-    }
-
     default:
       return res.status(400).json({ error: "username and password is wrong" });
   }

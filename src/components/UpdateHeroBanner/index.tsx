@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Button, Modal } from "flowbite-react";
 import React from "react";
 
@@ -5,33 +6,72 @@ export interface updateHeaderBannerCompInterface {
   setClose: React.Dispatch<React.SetStateAction<boolean>>;
   isShow: boolean;
   data?: any;
+  fetchDat: () => Promise<void>;
 }
 
 const UpdateHeroBannerComp: React.FC<updateHeaderBannerCompInterface> = ({
   setClose,
   isShow,
   data,
+  fetchDat,
 }) => {
+  const [toggle, settoggle] = React.useState<boolean>(false);
   const [file, setfile] = React.useState<string | undefined>();
+  const [fileImage, setfileImage] = React.useState<any>();
 
-  const onSubmit = () => {
+  const fetchHero = async () => {
+    try {
+      const config = {
+        headers: { "content-type": "multipart/form-data" },
+      };
+
+      const formData = new FormData();
+      formData.append("gambar", fileImage);
+      formData.append("is_active", String(toggle ? toggle : false));
+
+      await axios.put(`/api/hero/${data.position}`, formData, config);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onSubmit = async () => {
+    await fetchHero();
+    await fetchDat();
     setClose(false);
+    // window.location.reload();
   };
 
   const handleAddPict = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]?.type.match(/png|jpeg|jpg/)) {
       setfile(URL.createObjectURL(e.target.files[0]));
+      setfileImage(e.target.files[0]);
     }
   };
 
   React.useEffect(() => {
     setfile(data?.src ? data?.src : undefined);
-  }, [isShow]);
+    settoggle(data?.is_active);
+  }, [data]);
 
   return (
     <>
-      <Modal.Header>Terms of Service</Modal.Header>
+      <Modal.Header>HeroImage</Modal.Header>
       <Modal.Body>
+        <div>
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              className="sr-only peer"
+              checked={toggle === undefined ? false : toggle}
+              onChange={() => settoggle(!toggle)}
+            />
+            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+              is active
+            </span>
+          </label>
+        </div>
         <div className="mt-4 relative flex flex-col w-full h-full border-4 border-dashed hover:bg-gray-100  hover:border-gray-300 rounded-[8px]">
           {file && (
             <div className="absolute flex items-center z-20 top-0 right-0 m-1 cursor-pointer">
@@ -61,14 +101,8 @@ const UpdateHeroBannerComp: React.FC<updateHeaderBannerCompInterface> = ({
           <label className="w-full min-h-[250px] h-full flex justify-center items-center">
             <div className="flex w-full h-full items-center justify-center">
               {file ? (
-                <div
-                  className={`w-full aspect-h-1 bg-gray-100 bg-opacity-30 rounded-lg overflow-hidden`}
-                >
-                  <img
-                    src={file}
-                    alt="of the author"
-                    // layout="fill"
-                  />
+                <div className="w-full aspect-h-1 bg-gray-100 bg-opacity-30 rounded-lg overflow-hidden">
+                  <img src={file} alt="of the author" />
                 </div>
               ) : (
                 <div className="flex flex-col justify-center items-center fill-slate-500">
@@ -86,10 +120,12 @@ const UpdateHeroBannerComp: React.FC<updateHeaderBannerCompInterface> = ({
               multiple={false}
             />
           </label>
-        </div>{" "}
+        </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onSubmit}>I accept</Button>
+        <Button onClick={onSubmit} className="w-full">
+          Submit
+        </Button>
       </Modal.Footer>
     </>
   );

@@ -5,7 +5,7 @@ import Head from "next/head";
 import SideBarComp from "@/components/common/SideBar";
 import MainComp from "@/components/common/MainComp";
 
-import { Table } from "flowbite-react";
+import { Spinner, Table } from "flowbite-react";
 
 import { readFile } from "../../lib/readFileJson.lib";
 import ModalComp from "@/components/common/Modal";
@@ -28,12 +28,13 @@ const DashboardPage: NextPage<{ data: Array<dataHeroInterface> }> = ({
 }) => {
   const [isShow, setisShow] = React.useState<boolean>(false);
   const [editPosition, seteditPosition] = React.useState<number | null>();
-  const [dataDummy, setdummyData] = React.useState<Array<any>>([data]);
+  const [newData, setnewData] = React.useState<Array<dataHeroInterface>>();
 
   const fetchHero = async () => {
     try {
-      const res = await axios.get("/api/hero");
-      setdummyData(res.data.data);
+      console.log("fetching ulang!");
+      const response = await axios.get(`/api/hero`);
+      setnewData(response.data.data);
     } catch (error) {
       console.error(error);
     }
@@ -41,6 +42,9 @@ const DashboardPage: NextPage<{ data: Array<dataHeroInterface> }> = ({
 
   React.useEffect(() => {
     const controller = new AbortController();
+
+    !data && fetchHero();
+    setnewData(data);
 
     return () => controller.abort();
   }, []);
@@ -81,44 +85,49 @@ const DashboardPage: NextPage<{ data: Array<dataHeroInterface> }> = ({
                   </Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
-                  {data.map((data, index) => (
-                    <Table.Row
-                      key={index}
-                      className="bg-white dark:border-gray-700 dark:bg-gray-800"
-                    >
-                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white text-center">
-                        {data.position}
-                      </Table.Cell>
-                      <Table.Cell>
-                        <img
-                          src={data.src}
-                          alt={data.name}
-                          className="h-[48px] w-full object-cover"
-                        />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <div className="flex gap-4 justify-center items-center">
-                          <button
-                            onClick={() => {
-                              seteditPosition(data.position);
-                              setisShow(true);
-                            }}
-                            className="bg-blue-600 px-4 py-2 rounded-[8px] text-white flex gap-3 justify-center items-center"
-                          >
-                            <img src="/logos/edit_tombol.svg" alt="edit_btn" />
-                            Edit
-                          </button>
-                          {/* <button className="bg-red-600 px-4 py-2 rounded-[8px] text-white flex gap-3 justify-center items-center">
+                  {/* {!newData && <Spinner aria-label="Default status example" />} */}
+                  {newData &&
+                    newData.map((data, index) => (
+                      <Table.Row
+                        key={index}
+                        className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                      >
+                        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white text-center">
+                          {data.position}
+                        </Table.Cell>
+                        <Table.Cell>
+                          <img
+                            src={data.src}
+                            alt={data.name}
+                            className="h-[48px] w-full object-cover"
+                          />
+                        </Table.Cell>
+                        <Table.Cell>
+                          <div className="flex gap-4 justify-center items-center">
+                            <button
+                              onClick={() => {
+                                seteditPosition(data.position);
+                                setisShow(true);
+                              }}
+                              className="bg-blue-600 px-4 py-2 rounded-[8px] text-white flex gap-3 justify-center items-center"
+                            >
+                              <img
+                                src="/logos/edit_tombol.svg"
+                                alt="edit_btn"
+                              />
+                              Edit
+                            </button>
+                            {/* <button className="bg-red-600 px-4 py-2 rounded-[8px] text-white flex gap-3 justify-center items-center">
                             <img
                               src="/logos/delete_tombol.svg"
                               alt="edit_btn"
                             />
                             Delete
                           </button> */}
-                        </div>
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
+                          </div>
+                        </Table.Cell>
+                      </Table.Row>
+                    ))}
                 </Table.Body>
               </Table>
               <ModalComp isShow={isShow} setisShow={setisShow}>
@@ -126,6 +135,7 @@ const DashboardPage: NextPage<{ data: Array<dataHeroInterface> }> = ({
                   isShow={isShow}
                   setClose={setisShow}
                   data={data.filter((d) => d.position === editPosition)[0]}
+                  fetchDat={fetchHero}
                 />
               </ModalComp>
             </React.Fragment>
