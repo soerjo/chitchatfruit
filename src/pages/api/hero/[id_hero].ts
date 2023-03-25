@@ -1,7 +1,8 @@
-import nc from "next-connect";
 import fs from "fs";
-import multer from "multer";
 import path from "path";
+import multer from "multer";
+import nc from "next-connect";
+
 import type { NextApiRequest, NextApiResponse } from "next";
 import { readFile, writeFile } from "@/lib/readFileJson.lib";
 
@@ -18,7 +19,7 @@ const upload = multer({
   storage: multer.diskStorage({
     destination: "./public/images/carousel",
     filename: (req, file, cb) => {
-      console.log({ file });
+      // console.log({ file });
       const extname = path.extname(file.originalname);
       const filename = `${new Date().getTime()}${extname}`;
       return cb(null, filename);
@@ -57,15 +58,22 @@ const handlerNext = nc()
         const newData = data.map((ar) => {
           if (ar.position === Number(heroIndex)) {
             const arrPath = String(file?.path).split("/");
-            arrPath.shift();
+            const lastSrc = String(ar.src).split("/");
 
-            file && fs.unlinkSync(`./public${ar.src}`);
+            file &&
+              fs.unlinkSync(
+                `./public/images/carousel/${lastSrc[lastSrc.length - 1]}`
+              );
 
             return {
               position: Number(heroIndex),
               alt: file ? String(file?.originalname).split(".")[0] : ar.alt,
               name: file ? String(file?.originalname).split(".")[0] : ar.name,
-              src: file ? `/${arrPath.join("/")}` : ar.src,
+              src: file
+                ? `${process.env.FE_URL}/api/hero/images/${
+                    arrPath[arrPath.length - 1]
+                  }`
+                : ar.src,
               is_active: is_active,
               created_at: new Date(editedData.created_at),
               updated_at: new Date(),

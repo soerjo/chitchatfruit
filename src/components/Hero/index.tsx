@@ -32,7 +32,7 @@ const Hero = () => {
                 src={data.src}
                 alt={data.alt}
                 key={index}
-                className="object-cover bg-red-300 h-full w-full"
+                className="object-cover h-full w-full"
               />
             );
           })}

@@ -1,27 +1,27 @@
 [
   {
     "position": 1,
-    "alt": "IMG_6954",
-    "name": "IMG_6954",
-    "src": "/images/carousel/pexels-asad-nazir-1987049.jpg",
+    "alt": "fruits-color-testing-mecomb-hunterlab-malaysia-4",
+    "name": "fruits-color-testing-mecomb-hunterlab-malaysia-4",
+    "src": "http://localhost:3000/api/hero/images/1679707452569.png",
     "is_active": true,
     "created_at": "1970-01-01T00:00:00.000Z",
-    "updated_at": "2023-03-23T15:10:47.331Z"
+    "updated_at": "2023-03-25T01:24:12.573Z"
   },
   {
     "position": 2,
-    "alt": "IMG_6688",
-    "name": "IMG_6688",
-    "src": "/images/carousel/pexels-ella-olsson-1334131.jpg",
+    "alt": "pexels-pixabay-89778",
+    "name": "pexels-pixabay-89778",
+    "src": "http://localhost:3000/api/hero/images/1679706490151.jpg",
     "is_active": true,
     "created_at": "1970-01-01T00:00:00.000Z",
-    "updated_at": "2023-03-23T15:11:26.250Z"
+    "updated_at": "2023-03-25T01:08:10.166Z"
   },
   {
     "position": 3,
     "alt": "NPWP Randy Andy",
     "name": "NPWP Randy Andy",
-    "src": "/images/carousel/pexels-engin-akyurt-2736370.jpg",
+    "src": "http://localhost:3000/api/hero/images/pexels-engin-akyurt-2736370.jpg",
     "is_active": true,
     "created_at": "1970-01-01T00:00:00.000Z",
     "updated_at": "2023-03-23T15:12:37.197Z"
@@ -30,7 +30,7 @@
     "position": 4,
     "alt": "IMG_6910",
     "name": "IMG_6910",
-    "src": "/images/carousel/Rectangle 1.png",
+    "src": "http://localhost:3000/api/hero/images/Rectangle 1.png",
     "is_active": true,
     "created_at": "1970-01-01T00:00:00.000Z",
     "updated_at": "2023-03-23T15:12:06.317Z"
