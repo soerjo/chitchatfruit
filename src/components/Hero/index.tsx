@@ -23,7 +23,7 @@ const Hero = () => {
 
   return (
     <div className="h-[640px] sm:h-[640px] xl:h-[640px] 2xl:h-[640px]">
-      <Carousel slideInterval={5000}>
+      <Carousel slideInterval={5000} indicators={false}>
         {dummyData
           .filter((d) => d.is_active !== false)
           .map((data, index) => {

@@ -19,7 +19,7 @@ const dummyMainProduct = [
 const ParcelComp = () => {
   return (
     <Container>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap mt-12">
         <div className="flex w-full flex-1 flex-col gap-[15px] pb-[96px] md:pr-[49px]">
           <h2 className="font-normal text-[48px] leading-[48px] text-left">
             Kombinasikan Parcel dan Momen yang tepat

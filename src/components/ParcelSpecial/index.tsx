@@ -1,6 +1,7 @@
 import axios from "axios";
+import { Carousel } from "flowbite-react";
 import React from "react";
-import CardComp, { CardCompProps } from "../common/Card";
+import CardComp from "../common/Card";
 import Container from "../common/Container";
 
 const ParcelSpecialComp = () => {
@@ -28,9 +29,37 @@ const ParcelSpecialComp = () => {
     <Container>
       <div className="w-full flex flex-col justify-center items-center">
         <h2 className="text-[32px] mb-[93px]">Pilih Parcel Specialmu</h2>
+        {/* <Carousel slideInterval={5000} indicators={false}>
+          {dummyProductData.map((data, index) => (
+            <CardComp
+              key={index}
+              title={data.title}
+              description={data.description}
+              price={data.price}
+              img={data.src}
+            />
+          ))}
+        </Carousel> */}
+
         <div className="w-full flex gap-4">
-          <img src="/logos/left_button.svg" />
-          <div className="flex flex-row gap-4 w-full py-4 overflow-hidden">
+          {/* <div className="bg-coklat hover:bg-coklat-dark cursor-pointer h-[40px] w-[45px]  my-auto rounded-full flex justify-center items-center">
+            <svg
+              width="9"
+              height="14"
+              viewBox="0 0 9 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.49996 12.8333L1.66663 6.99996L7.49996 1.16663"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div> */}
+          <div className="flex flex-row gap-4 w-full py-4 overflow-x-auto px-4">
             {dummyProductData.map((data, index) => (
               <CardComp
                 key={index}
@@ -41,23 +70,24 @@ const ParcelSpecialComp = () => {
               />
             ))}
           </div>
-          <img src="/logos/right_button.svg" />
-        </div>
-        {/* <div className="w-full flex gap-4">
-          <img src="/logos/left_button.svg" />
-          <div className="flex flex-row gap-4 w-full py-4 overflow-hidden">
-            {dummyProductData.map((data, index) => (
-              <CardComp
-                key={index}
-                title={data.title}
-                description={data.description}
-                price={data.price}
-                img={data.img}
+          {/* <div className="bg-coklat hover:bg-coklat-dark cursor-pointer h-[40px] w-[45px]  my-auto rounded-full flex justify-center items-center">
+            <svg
+              width="9"
+              height="14"
+              viewBox="0 0 9 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.5 1.16663L7.33333 6.99996L1.5 12.8333"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               />
-            ))}
-          </div>
-          <img src="/logos/right_button.svg" />
-        </div> */}
+            </svg>
+          </div> */}
+        </div>
       </div>
     </Container>
   );

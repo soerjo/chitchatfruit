@@ -38,7 +38,7 @@ const KontakKamiComp = () => {
   return (
     <Container>
       <div className="flex md:flex-row flex-col w-full h-fit bg-kuning rounded-[8px] overflow-hidden">
-        <div className="flex flex-1 w-full ">
+        <div className="flex flex-1 w-full">
           <img
             src="/images/background/bg_02.png"
             alt="background"

@@ -15,7 +15,7 @@ const NavbarComp = () => {
           <Button>Contact Us</Button>
         </Link>
       </div>
-      <div className="w-full h-[85px] bg-red-300" />
+      <div className="w-full h-[85px]" />
     </>
   );
 };
