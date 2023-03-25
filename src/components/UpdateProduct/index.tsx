@@ -12,7 +12,7 @@ export interface updateHeaderBannerCompInterface {
   fetchDat: () => Promise<void>;
 }
 
-type productTypes = "buah" | "snack" | "keramik";
+type dataProductTypes = "buah" | "snack" | "keramik";
 
 const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
   setClose,
@@ -24,7 +24,7 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
     {} as dataProductInterface
   );
   const [fileImage, setfileImage] = React.useState<any>();
-  const productTypes: productTypes[] = ["buah", "keramik", "snack"];
+  const productTypes: dataProductTypes[] = ["buah", "keramik", "snack"];
 
   const fetchProduct = async () => {
     if (!productdata.index) return;
