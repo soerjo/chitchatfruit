@@ -32,8 +32,8 @@ const DashboardPage: NextPage<{ data: Array<dataHeroInterface> }> = ({
 
   const fetchHero = async () => {
     try {
-      console.log("fetching ulang!");
       const response = await axios.get(`/api/hero`);
+
       setnewData(response.data.data);
     } catch (error) {
       console.error(error);
@@ -134,7 +134,10 @@ const DashboardPage: NextPage<{ data: Array<dataHeroInterface> }> = ({
                 <UpdateHeroBannerComp
                   isShow={isShow}
                   setClose={setisShow}
-                  data={data.filter((d) => d.position === editPosition)[0]}
+                  data={
+                    newData &&
+                    newData.filter((d) => d.position === editPosition)[0]
+                  }
                   fetchDat={fetchHero}
                 />
               </ModalComp>

@@ -40,7 +40,7 @@ const SideBarComp: React.FC = () => {
             key={index}
           >
             <img src={data.icons} alt="icon-menu" className="text-black" />
-            <h3>{data.title}</h3>
+            <h3 className="whitespace-nowrap">{data.title}</h3>
           </Link>
         ))}
       </div>

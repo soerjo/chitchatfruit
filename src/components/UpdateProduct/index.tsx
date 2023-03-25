@@ -1,41 +1,92 @@
-import { Button, Modal } from "flowbite-react";
-import { numberWithCommas } from "../../utils/thousandSaparator.util";
 import React from "react";
+import axios from "axios";
+
+import { Button, Modal } from "flowbite-react";
+import { dataProductInterface } from "@/pages/dashboard/product";
 
 export interface updateHeaderBannerCompInterface {
   setClose: React.Dispatch<React.SetStateAction<boolean>>;
-  data?: any;
+  data: dataProductInterface;
   isShow: boolean;
+  fetchDat: () => Promise<void>;
 }
 
 const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
   setClose,
   data,
   isShow,
+  fetchDat,
 }) => {
-  const [title, settitle] = React.useState<string | null>();
-  const [type, settype] = React.useState<string | null>();
-  const [description, setdescription] = React.useState<string | null>();
-  const [price, setprice] = React.useState<string | null>();
-  const [file, setfile] = React.useState<string | undefined>();
+  const [productdata, setProductdata] = React.useState<dataProductInterface>(
+    {} as dataProductInterface
+  );
+  const [fileImage, setfileImage] = React.useState<any>();
 
-  const onSubmit = () => {
+  const fetchProduct = async () => {
+    if (!productdata.index) return;
+    try {
+      const config = {
+        headers: { "content-type": "multipart/form-data" },
+      };
+
+      const formData = new FormData();
+      formData.append("gambar", fileImage);
+      formData.append("title", productdata.title);
+      formData.append("type", productdata.type);
+      formData.append("description", productdata.description);
+      formData.append("price", String(productdata.price));
+
+      await axios.put(`/api/product/${productdata.index}`, formData, config);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchCreateProduct = async () => {
+    try {
+      console.log("create product!");
+      const config = {
+        headers: { "content-type": "multipart/form-data" },
+      };
+
+      const formData = new FormData();
+      formData.append("gambar", fileImage);
+      formData.append("title", productdata.title);
+      formData.append("type", productdata.type);
+      formData.append("description", productdata.description);
+      formData.append("price", String(productdata.price));
+
+      await axios.post(`/api/product/`, formData, config);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    productdata.index && (await fetchProduct());
+    !productdata.index && (await fetchCreateProduct());
+    await fetchDat();
     setClose(false);
   };
 
   const handleAddPict = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]?.type.match(/png|jpeg|jpg/)) {
-      setfile(URL.createObjectURL(e.target.files[0]));
+      setProductdata({
+        ...productdata,
+        src: URL.createObjectURL(e.target.files[0]),
+      });
+      setfileImage(e.target.files[0]);
     }
   };
 
   React.useEffect(() => {
-    settitle(null);
-    settype(null);
-    setdescription(null);
-    setprice(null);
-    setfile(data?.src ? data?.src : undefined);
+    setProductdata(data);
+    setfileImage("");
+    !isShow && setProductdata({} as dataProductInterface);
   }, [isShow]);
+
+  console.log({ productdata });
 
   return (
     <>
@@ -52,12 +103,15 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
             <input
               type="text"
               id="title"
-              onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                settitle(e.currentTarget.value)
-              }
+              onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                setProductdata({
+                  ...productdata,
+                  title: e.currentTarget?.value,
+                });
+              }}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="please insert your title..."
-              value={data?.title && data?.title}
+              value={productdata.title || ""}
               required
             />
           </div>
@@ -72,11 +126,14 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
               type="text"
               id="type"
               onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                settype(e.currentTarget.value)
+                setProductdata({
+                  ...productdata,
+                  type: e.currentTarget.value,
+                })
               }
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="please insert your type..."
-              value={data?.type && data?.type}
+              value={productdata?.type || ""}
               required
             />
           </div>
@@ -91,11 +148,14 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
               rows={5}
               id="description"
               onChange={(e: React.FormEvent<HTMLTextAreaElement>) =>
-                setdescription(e.currentTarget.value)
+                setProductdata({
+                  ...productdata,
+                  description: e.currentTarget.value,
+                })
               }
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="please insert your description..."
-              value={data?.description && data?.description}
+              value={productdata?.description || ""}
               required
             />
           </div>
@@ -109,22 +169,25 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
             <input
               type="number"
               id="harga"
-              onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                setprice(e.currentTarget.value)
-              }
+              onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                setProductdata({
+                  ...productdata,
+                  price: Number(e.currentTarget.value) || undefined,
+                });
+              }}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="please insert your harga..."
-              value={data?.price && data?.price}
+              value={productdata?.price || ""}
               required
             />
           </div>
           <div className="mt-4 relative flex flex-col w-full h-full border-4 border-dashed hover:bg-gray-100  hover:border-gray-300 rounded-[8px]">
-            {file && (
+            {productdata?.src && (
               <div className="absolute flex items-center z-20 top-0 right-0 m-1 cursor-pointer">
                 <div
                   id="delete"
                   onClick={() => {
-                    setfile(undefined);
+                    setProductdata({ ...productdata, src: "" });
                   }}
                 >
                   <svg
@@ -146,12 +209,12 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
             )}
             <label className="w-full min-h-[250px] h-full flex justify-center items-center">
               <div className="flex w-full h-full items-center justify-center">
-                {file ? (
+                {productdata?.src ? (
                   <div
                     className={`w-full aspect-h-1 bg-gray-100 bg-opacity-30 rounded-lg overflow-hidden`}
                   >
                     <img
-                      src={file}
+                      src={productdata?.src || ""}
                       alt="of the author"
                       // layout="fill"
                     />

@@ -39,7 +39,6 @@ const UpdateHeroBannerComp: React.FC<updateHeaderBannerCompInterface> = ({
     await fetchHero();
     await fetchDat();
     setClose(false);
-    // window.location.reload();
   };
 
   const handleAddPict = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +51,8 @@ const UpdateHeroBannerComp: React.FC<updateHeaderBannerCompInterface> = ({
   React.useEffect(() => {
     setfile(data?.src ? data?.src : undefined);
     settoggle(data?.is_active);
-  }, [data]);
+    setfileImage("");
+  }, [isShow]);
 
   return (
     <>
