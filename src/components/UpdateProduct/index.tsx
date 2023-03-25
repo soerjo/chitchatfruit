@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { Button, Modal } from "flowbite-react";
 import { dataProductInterface } from "@/pages/dashboard/product";
+import { Select, Option } from "@material-tailwind/react";
 
 export interface updateHeaderBannerCompInterface {
   setClose: React.Dispatch<React.SetStateAction<boolean>>;
@@ -10,6 +11,8 @@ export interface updateHeaderBannerCompInterface {
   isShow: boolean;
   fetchDat: () => Promise<void>;
 }
+
+type productTypes = "buah" | "snack" | "keramik";
 
 const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
   setClose,
@@ -21,6 +24,7 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
     {} as dataProductInterface
   );
   const [fileImage, setfileImage] = React.useState<any>();
+  const productTypes: productTypes[] = ["buah", "keramik", "snack"];
 
   const fetchProduct = async () => {
     if (!productdata.index) return;
@@ -44,7 +48,6 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
 
   const fetchCreateProduct = async () => {
     try {
-      console.log("create product!");
       const config = {
         headers: { "content-type": "multipart/form-data" },
       };
@@ -86,8 +89,6 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
     !isShow && setProductdata({} as dataProductInterface);
   }, [isShow]);
 
-  console.log({ productdata });
-
   return (
     <>
       <Modal.Header>Product</Modal.Header>
@@ -98,7 +99,7 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
               htmlFor="title"
               className="font-inter font-medium text-[14px] capitalize"
             >
-              title
+              judul
             </label>
             <input
               type="text"
@@ -120,9 +121,23 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
               htmlFor="type"
               className="font-inter font-medium text-[14px] capitalize"
             >
-              type
+              tipe
             </label>
-            <input
+
+            <Select
+              variant="static"
+              value={productdata.type}
+              onChange={(val) =>
+                setProductdata({ ...productdata, type: val || "" })
+              }
+            >
+              {productTypes.map((type, index) => (
+                <Option value={type} key={index}>
+                  {type}
+                </Option>
+              ))}
+            </Select>
+            {/* <input
               type="text"
               id="type"
               onChange={(e: React.FormEvent<HTMLInputElement>) =>
@@ -135,14 +150,14 @@ const UpdateProduct: React.FC<updateHeaderBannerCompInterface> = ({
               placeholder="please insert your type..."
               value={productdata?.type || ""}
               required
-            />
+            /> */}
           </div>
           <div className="flex flex-col">
             <label
               htmlFor="description"
               className="font-inter font-medium text-[14px] capitalize"
             >
-              description
+              deskripsi
             </label>
             <textarea
               rows={5}
