@@ -21,8 +21,9 @@ const ParcelComp = () => {
     <Container>
       <div className="flex flex-wrap mt-12">
         <div className="flex w-full flex-1 flex-col gap-[15px] pb-[96px] md:pr-[49px]">
-          <h2 className="font-normal text-[48px] leading-[48px] text-left">
-            Kombinasikan Parcel dan Momen yang tepat
+          <h2 className="font-lexend font-semibold text-[32px] leading-[35px] text-left">
+            Bingung cari hadiah spesial untuk orang spesial mu? Tenang, kami
+            punya pilihannya
           </h2>
           <p className="text-[24px] leading-none ">
             chitchatfruit menyediakan 3 varian parcel untuk mu!

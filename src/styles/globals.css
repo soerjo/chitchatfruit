@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Candal&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
   --secondary: darkgray;
@@ -39,6 +40,6 @@ h1 {
   @apply font-candal;
 }
 
-h2 {
+/* h2 {
   @apply font-candal text-[32px] text-center;
-}
+} */
