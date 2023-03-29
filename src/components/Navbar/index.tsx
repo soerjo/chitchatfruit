@@ -11,7 +11,10 @@ const NavbarComp = () => {
         <span className="self-center whitespace-nowrap text-xl font-normal dark:text-white text-[24px] font-candal">
           <img src="/logos/main_logo.svg" />
         </span>
-        <Link href={`https://api.whatsapp.com/send?phone=${phone_number}`}>
+        <Link
+          href={`https://api.whatsapp.com/send?phone=${phone_number}`}
+          target="_blank"
+        >
           <Button>Contact Us</Button>
         </Link>
       </div>
