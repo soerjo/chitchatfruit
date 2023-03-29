@@ -30,17 +30,6 @@ const ParcelSpecialComp = () => {
         <h2 className="text-[32px] mb-[93px] font-candal text-center">
           Pilih Parcel Spesialmu
         </h2>
-        {/* <Carousel slideInterval={5000} indicators={false}>
-          {dummyProductData.map((data, index) => (
-            <CardComp
-              key={index}
-              title={data.title}
-              description={data.description}
-              price={data.price}
-              img={data.src}
-            />
-          ))}
-        </Carousel> */}
 
         <div className="w-full flex gap-4">
           {/* <div className="bg-coklat hover:bg-coklat-dark cursor-pointer h-[40px] w-[45px]  my-auto rounded-full flex justify-center items-center">
