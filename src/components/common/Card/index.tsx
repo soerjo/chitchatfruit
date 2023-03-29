@@ -10,7 +10,7 @@ export interface CardCompProps {
 
 const CardComp: React.FC<CardCompProps> = (props) => {
   return (
-    <div className="w-1/3  p-2">
+    <div className="w-full md:w-1/3  p-2">
       <div className="bg-white rounded-[8px] overflow-hidden shadow-md h-full border-[1px]">
         <img
           src={props.img}

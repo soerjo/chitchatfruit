@@ -3,15 +3,15 @@ import Container from "../common/Container";
 
 const dummyMainProduct = [
   {
-    title: "Percel Buah",
+    title: "Parcel Buah",
     img: "/images/parcel_01.png",
   },
   {
-    title: "Percel Snack",
+    title: "Parcel Snack",
     img: "/images/parcel_02.png",
   },
   {
-    title: "Percel Pecah Belah",
+    title: "Parcel Pecah Belah",
     img: "/images/parcel_03.png",
   },
 ];
