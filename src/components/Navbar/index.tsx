@@ -9,7 +9,7 @@ const NavbarComp = () => {
     <>
       <div className="fixed z-50 w-full bg-white h-[85px] flex justify-between items-center px-[24px]">
         <span className="self-center whitespace-nowrap text-xl font-normal dark:text-white text-[24px] font-candal">
-          <img src="/logos/main_logo.svg" />
+          <img src="/logos/main_logo.svg" alt="chitchatfruit-logo" />
         </span>
         <Link
           href={`https://api.whatsapp.com/send?phone=${phone_number}`}
