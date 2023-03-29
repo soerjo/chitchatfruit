@@ -27,6 +27,7 @@ module.exports = withMT({
       poppins: ["Poppins", "sans-serif"],
       candal: ["Candal", "sans-serif"],
       inter: ["Inter", "sans-serif"],
+      lexend: ["Lexend", "sans - serif"],
     },
     extend: {},
   },

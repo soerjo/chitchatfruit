@@ -15,18 +15,28 @@ const FooterComp = () => {
             <h4 className="mb-2 font-candal text-[16px]">Temukan kami di</h4>
             <div className="flex flex-row justify-end gap-4">
               <div className="bg-white w-[48px] h-[48px] flex justify-center items-center rounded-full">
-                <img
-                  className=" object-contain"
-                  src="/logos/instagram.png"
-                  alt="insta"
-                />
+                <a
+                  href="https://www.instagram.com/chitchatfruit/?hl=en"
+                  target={"_blank"}
+                >
+                  <img
+                    className=" object-contain"
+                    src="/logos/instagram.png"
+                    alt="insta"
+                  />
+                </a>
               </div>
               <div className="bg-white w-[48px] h-[48px] flex justify-center items-center rounded-full">
-                <img
-                  className=" object-contain"
-                  src="/logos/tokopedia.png"
-                  alt="tokped"
-                />
+                <a
+                  href="https://www.tokopedia.com/chitchatfruit"
+                  target={"_blank"}
+                >
+                  <img
+                    className=" object-contain"
+                    src="/logos/tokopedia.png"
+                    alt="tokped"
+                  />
+                </a>
               </div>
             </div>
           </div>

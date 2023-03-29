@@ -28,7 +28,9 @@ const ParcelSpecialComp = () => {
   return (
     <Container>
       <div className="w-full flex flex-col justify-center items-center">
-        <h2 className="text-[32px] mb-[93px]">Pilih Parcel Specialmu</h2>
+        <h2 className="text-[32px] mb-[93px] font-candal text-center">
+          Pilih Parcel Specialmu
+        </h2>
         {/* <Carousel slideInterval={5000} indicators={false}>
           {dummyProductData.map((data, index) => (
             <CardComp
