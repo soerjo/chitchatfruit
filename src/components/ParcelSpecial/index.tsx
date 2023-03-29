@@ -27,7 +27,7 @@ const ParcelSpecialComp = () => {
   return (
     <Container>
       <div className="w-full flex flex-col justify-center items-center">
-        <h2 className="text-[32px] mb-[93px] font-candal text-center">
+        <h2 className="font-lexend font-semibold text-[32px] mb-[93px] text-center">
           Pilih Parcel Spesialmu
         </h2>
 
