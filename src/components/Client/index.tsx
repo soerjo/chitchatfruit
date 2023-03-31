@@ -8,6 +8,12 @@ const dummyClientData = [
   "/logos/client/logo_03.png",
   "/logos/client/logo_04.png",
   "/logos/client/logo_05.png",
+  "/logos/client/logo_06.png",
+  "/logos/client/logo_07.png",
+  "/logos/client/logo_08.png",
+  "/logos/client/logo_09.png",
+  "/logos/client/logo_10.png",
+  "/logos/client/logo_11.png",
 ];
 
 interface dimensionInterface {
