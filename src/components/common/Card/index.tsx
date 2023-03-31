@@ -15,7 +15,7 @@ const CardComp: React.FC<CardCompProps> = (props) => {
         <img
           src={props.img}
           alt={props.title}
-          className="w-full object-cover h-[150px]"
+          className="w-full object-cover h-[250px]"
         />
         <div className="p-[20px]">
           <h4 className="font-inter text-[20px] font-semibold capitalize">
