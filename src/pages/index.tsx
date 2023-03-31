@@ -2,14 +2,23 @@ import ClientComp from "@/components/Client";
 import CustomParcelComp from "@/components/CustomParcel";
 import FloatingWhatsapp from "@/components/FloatingWhatsapp";
 import FooterComp from "@/components/Footer";
-import Hero from "@/components/Hero";
+import Hero, { HeroesInterface } from "@/components/Hero";
 import KontakKamiComp from "@/components/KontakKami";
 import NavbarComp from "@/components/Navbar";
 import ParcelComp from "@/components/Parcel";
-import ParcelSpecialComp from "@/components/ParcelSpecial";
+import ParcelSpecialComp, {
+  productInterface,
+} from "@/components/ParcelSpecial";
+import axios from "axios";
+import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 
-export default function Home() {
+interface HomePropsInterface {
+  heroes: Array<HeroesInterface>;
+  products: Array<productInterface>;
+}
+
+const Home: NextPage<HomePropsInterface> = ({ heroes, products }) => {
   return (
     <>
       <Head>
@@ -23,11 +32,11 @@ export default function Home() {
       </Head>
       <main>
         <NavbarComp />
-        <Hero />
+        <Hero heroes={heroes} />
         <FloatingWhatsapp />
         <div className="max-w-[1280px] m-auto">
           <ParcelComp />
-          <ParcelSpecialComp />
+          <ParcelSpecialComp products={products} />
           <CustomParcelComp />
           <ClientComp />
           <KontakKamiComp />
@@ -36,4 +45,25 @@ export default function Home() {
       </main>
     </>
   );
-}
+};
+
+export default Home;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  try {
+    const resHero = await axios.get(`${process.env.FE_URL}/api/hero`);
+    const heroes = resHero.data.data;
+
+    const resProducts = await axios.get(`${process.env.FE_URL}/api/product`);
+    const products = resProducts.data.data;
+
+    return {
+      props: { heroes, products },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: { heroes: [], products: [] },
+    };
+  }
+};

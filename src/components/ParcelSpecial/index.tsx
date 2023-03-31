@@ -3,26 +3,43 @@ import React from "react";
 import CardComp from "../common/Card";
 import Container from "../common/Container";
 
-const ParcelSpecialComp = () => {
-  const [dummyProductData, setdummyProductData] = React.useState<Array<any>>(
-    []
-  );
+export interface productInterface {
+  index: string;
+  title: string;
+  type: string;
+  description: string;
+  price: number;
+  src: string;
+  updated_at: string;
+  created_at: string;
+}
 
-  const fetchProduct = async () => {
-    try {
-      const res = await axios.get("/api/product");
-      setdummyProductData(res.data.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+interface parcelSpecialProps {
+  products: Array<productInterface>;
+}
 
-  React.useEffect(() => {
-    const controller = new AbortController();
-    fetchProduct();
+const ParcelSpecialComp: React.FC<parcelSpecialProps> = ({
+  products: dummyProductData,
+}) => {
+  // const [dummyProductData, setdummyProductData] = React.useState<Array<any>>(
+  //   []
+  // );
 
-    return () => controller.abort();
-  }, []);
+  // const fetchProduct = async () => {
+  //   try {
+  //     const res = await axios.get("/api/product");
+  //     setdummyProductData(res.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // React.useEffect(() => {
+  //   const controller = new AbortController();
+  //   fetchProduct();
+
+  //   return () => controller.abort();
+  // }, []);
 
   return (
     <Container>

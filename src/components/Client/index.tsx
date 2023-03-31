@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Container from "../common/Container";
+import Image from "next/image";
 
 const dummyClientData = [
   "/logos/client/logo_01.png",
@@ -36,7 +37,7 @@ const ClientComp = () => {
             animate={{
               x: "-50%",
             }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             className="flex"
           >
             {dummyClientData.map((data, index) => (
@@ -44,7 +45,12 @@ const ClientComp = () => {
                 key={index}
                 className="min-w-[252px] h-[161px] flex justify-center items-center"
               >
-                <img src={data} alt={`client-${index}`} />
+                <Image
+                  src={data}
+                  alt={`client-${index}`}
+                  height={82}
+                  width={200}
+                />
               </div>
             ))}
             {dummyClientData.map((data, index) => (

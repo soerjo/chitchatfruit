@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../common/Container";
+import Image from "next/image";
 
 const dummyKontak = [
   {
@@ -15,7 +16,7 @@ const dummyKontak = [
   {
     title: "Phone",
     icon: "/logos/flat_phone.svg",
-    desc: "+62 878-4159-8516",
+    desc: "+62 812-9547-6702",
   },
   {
     title: "Instagram",
@@ -25,7 +26,7 @@ const dummyKontak = [
   {
     title: "Whatsapp",
     icon: "/logos/flat_whatsapp.svg",
-    desc: "+62 812-9547-6702",
+    desc: "+62 878-4159-8516",
   },
   {
     title: "Tokopedia",
@@ -39,10 +40,12 @@ const KontakKamiComp = () => {
     <Container>
       <div className="flex md:flex-row flex-col w-full h-fit bg-kuning rounded-[8px] overflow-hidden">
         <div className="flex flex-1 w-full">
-          <img
+          <Image
             src="/images/background/bg_02.png"
             alt="background"
             className="object-cover w-full h-full"
+            width={545}
+            height={434}
           />
         </div>
         <div className="flex flex-1 flex-col justify-center items-center">
