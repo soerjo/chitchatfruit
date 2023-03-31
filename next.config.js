@@ -8,6 +8,22 @@ const nextConfig = {
       permanent: true,
     },
   ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "www.chitchatfruit.com",
+      },
+      {
+        protocol: "https",
+        hostname: "chitchatfruit.com",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

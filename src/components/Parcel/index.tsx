@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../common/Container";
+import Image from "next/image";
 
 const dummyMainProduct = [
   {
@@ -32,10 +33,12 @@ const ParcelComp = () => {
         <div className="flex w-full flex-1 flex-row gap-4 justify-start">
           {dummyMainProduct.map((data, index) => (
             <div className="w-full " key={index}>
-              <img
+              <Image
                 src={data.img}
                 alt={data.title}
                 className="w-full h-[178px] object-cover"
+                width={161}
+                height={178}
               />
               <div className="px-[8px]">
                 <h3 className="mt-[12px] font-inter font-bold text-[24px] text-center leading-none">
