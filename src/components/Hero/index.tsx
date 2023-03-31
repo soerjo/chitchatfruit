@@ -49,8 +49,8 @@ const Hero: React.FC<HeroPropsInterface> = ({ heroes: dummyData }) => {
                   alt={data.alt}
                   key={index}
                   className="object-cover h-full w-full"
-                  width={720}
-                  height={360}
+                  width={1280}
+                  height={720}
                   loading="lazy"
                 />
               );
